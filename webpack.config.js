@@ -1,5 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
+const BundleAnalyzerPlugin =
+  require('webpack-bundle-analyzer').BundleAnalyzerPlugin; // Analyze bundle sizes to see how much JavaScript is being processed by the browser
 
 // Create the main configuration object
 module.exports = {
@@ -15,6 +17,9 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static', // the report outputs to an HTML file in the dist folder
     }),
   ],
   // mode you want webpack to run in
