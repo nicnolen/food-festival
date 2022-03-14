@@ -4,7 +4,8 @@
   "description": "A Progressive Web Application for an upcoming three-day food event",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "webpack": "webpack --watch",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -23,10 +24,13 @@
   "homepage": "https://github.com/nicnolen/food-festival#readme",
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "jquery": "^3.6.0",
     "popper.js": "^1.16.0",
     "save": "^2.4.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.17.0"
+    "@babel/eslint-parser": "^7.17.0",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
   }
 }
