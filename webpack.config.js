@@ -6,11 +6,16 @@ const BundleAnalyzerPlugin =
 // Create the main configuration object
 module.exports = {
   // relative path to the clients code
-  entry: './assets/js/script.js', // entry point is the root of the bundle and the beginning of the dependency graph.
+  entry: {
+    app: './assets/js/script.js', // entry point is the root of the bundle and the beginning of the dependency graph.
+    events: './assets/js/events.js',
+    schedule: './assets/js/schedule.js',
+    tickets: './assets/js/tickets.js',
+  },
   // output the bundled code
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.bundle.js',
+    filename: '[name].bundle.js', // name  of each attribute in the entry object will be used in place of `name` in each `bundle.js` file created
   },
   // use plugins to direct the webpack what to do
   plugins: [
