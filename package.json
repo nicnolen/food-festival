@@ -1,0 +1,29 @@
+{
+  "name": "food-festival",
+  "version": "1.0.0",
+  "description": "A Progressive Web Application for an upcoming three-day food event",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicnolen/food-festival.git"
+  },
+  "keywords": [
+    "PWA",
+    "food",
+    "festival"
+  ],
+  "author": "Nicholas Nolen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicnolen/food-festival/issues"
+  },
+  "homepage": "https://github.com/nicnolen/food-festival#readme",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "popper.js": "^1.16.0",
+    "save": "^2.4.0"
+  }
+}
