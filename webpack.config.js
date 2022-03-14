@@ -17,7 +17,33 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js', // name  of each attribute in the entry object will be used in place of `name` in each `bundle.js` file created
   },
-  // use plugins to direct the webpack what to do
+  // use module to direct what the webpack does to non javascript files
+  module: {
+    rules: [
+      {
+        test: /\.jpg$/i, // find any image file with a .jpg extension
+        // use is where the actual loader is implemented
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              esModule: false,
+              name(file) {
+                return '[path][name].[ext]';
+              },
+              publicPath: function (url) {
+                return url.replace('../', '/assets/');
+              },
+            },
+          },
+          {
+            loader: 'image-webpack-loader',
+          },
+        ],
+      },
+    ],
+  },
+  // use plugins to direct the webpack what to do to javascript files
   plugins: [
     new webpack.ProvidePlugin({
       $: 'jquery',
