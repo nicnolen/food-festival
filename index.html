@@ -11,7 +11,7 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    
+
     <script src="./dist/app.bundle.js" defer></script>
   </head>
   <body>
@@ -228,4 +228,17 @@
       </div>
     </footer>
   </body>
+  <script>
+    (function () {
+      // checks if `serviceWorker` exists on the global `navigator` object
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .register('./service-worker.js')
+          .then(() => console.info('Service Worker registered successfully.'))
+          .catch(error =>
+            console.error('Service Worker resistration failed:', error)
+          );
+      }
+    })();
+  </script>
 </html>
