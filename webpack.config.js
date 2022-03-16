@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const BundleAnalyzerPlugin =
   require('webpack-bundle-analyzer').BundleAnalyzerPlugin; // Analyze bundle sizes to see how much JavaScript is being processed by the browser
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 
 // Create the main configuration object
 module.exports = {
@@ -51,6 +52,23 @@ module.exports = {
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static', // the report outputs to an HTML file in the dist folder
+    }),
+    new WebpackPwaManifest({
+      name: 'Food Event', // name that will show up next to the app's icon on desktop devices
+      short_name: 'Foodies', //name that will appear on a user's home screen when the application has been downloaded
+      description: 'An app that allows you to view upcoming food events.',
+      start_url: '../index.html', // specifies homepage
+      background_color: '#01579b',
+      theme_color: '#ffffff', // color of the tool bar
+      fingerprints: false, // tell webpack whether or not it should generate unique fingerprints so that each time a new manifest is generated, it looks like this: manifest.lhge325d.json
+      inject: false, // determines whether the link to the manifest.json is added to the HTML
+      icons: [
+        {
+          src: path.resolve('assets/img/icons/icon-512x512.png'), // path to the icon image
+          sizes: [96, 128, 192, 256, 384, 512],
+          destination: path.join('assets', 'icons'), // where the icons will be sent
+        }, // icons for the buttons users see on their home screen
+      ],
     }),
   ],
   // mode you want webpack to run in
