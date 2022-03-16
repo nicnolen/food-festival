@@ -21,7 +21,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jpg$/i, // find any image file with a .jpg extension
+        test: /\.(png|jpe?g|gif)$/i, // find any image file with a .jpg extension
         // use is where the actual loader is implemented
         use: [
           {
@@ -55,4 +55,8 @@ module.exports = {
   ],
   // mode you want webpack to run in
   mode: 'development',
+
+  devServer: {
+    static: './',
+  },
 };

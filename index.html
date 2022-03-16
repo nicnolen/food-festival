@@ -230,14 +230,21 @@
   </body>
   <script>
     (function () {
-      // checks if `serviceWorker` exists on the global `navigator` object
+      // Register the service worker
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker
-          .register('./service-worker.js')
-          .then(() => console.info('Service Worker registered successfully.'))
-          .catch(error =>
-            console.error('Service Worker resistration failed:', error)
-          );
+          .register('/service-worker.js')
+          .then(function (registration) {
+            // Registration was successful
+            console.info(
+              'ServiceWorker registration successful with scope: ',
+              registration.scope
+            );
+          })
+          .catch(function (err) {
+            // registration failed :(
+            console.error('ServiceWorker registration failed: ', err);
+          });
       }
     })();
   </script>
