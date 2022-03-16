@@ -23,7 +23,7 @@ self.addEventListener('install', function (e) {
     // find specific cache by name
     caches.open(CACHE_NAME).then(function (cache) {
       console.log('installing cache : ' + CACHE_NAME);
-      // add every file from FTC array to the cache
+      // add every file from FILES_TO_CACHE array to the cache
       return cache.addAll(FILES_TO_CACHE);
     })
   );
@@ -57,6 +57,7 @@ self.addEventListener('activate', function (e) {
 self.addEventListener('fetch', function (e) {
   console.log('fetch request : ' + e.request.url)
   e.respondWith(
+    // see if the resource already exists in `caches`
     caches.match(e.request).then(function (request) {
       if (request) { // if cache is available, respond with cache
         console.log('responding with cache : ' + e.request.url)

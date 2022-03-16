@@ -231,9 +231,10 @@
   <script>
     (function () {
       // Register the service worker
+      // see if `serviceWorker` exists on the global navigator object
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker
-          .register('/serviceWorker.js')
+          .register('./serviceWorker.js')
           .then(function (registration) {
             // Registration was successful
             console.info(
